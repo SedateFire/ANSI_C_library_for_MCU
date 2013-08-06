@@ -18,13 +18,13 @@ if (NULL == (p))            \
 #define ASSERT_POINTER_RETUTN(p, ret)
 #endif
 /******************************************************************************/
-uint_fast16_t big_endian_to_uint16(void *buf)
+uint_fast16_t big_endian_to_uint16(void const *buf)
 {
     uint8_t const * const p = buf;
     return (((uint16_t)p[0]<<8) | ((uint16_t)p[1]<<0));
 }
 /******************************************************************************/
-uint_fast32_t big_endian_to_uint32(void *buf)
+uint_fast32_t big_endian_to_uint32(void const *buf)
 {
     uint8_t const * const p = buf;
     return (((uint32_t)p[0]<<24) \
@@ -33,7 +33,7 @@ uint_fast32_t big_endian_to_uint32(void *buf)
           | ((uint32_t)p[3]<< 0));
 }
 /******************************************************************************/
-void big_endian_to_uint16(void *buf, uint_fast16_t num)
+void uint16_to_big_endian(void *buf, uint_fast16_t num)
 {
     uint8_t * p;
     ASSERT_POINTER(buf);
@@ -42,7 +42,7 @@ void big_endian_to_uint16(void *buf, uint_fast16_t num)
     p[1] = (uint8_t)(num>>0);
 }
 /******************************************************************************/
-uint_fast32_t big_endian_to_uint32(void *buf, uint_fast32_t num)
+void uint32_to_big_endian(void *buf, uint_fast32_t num)
 {
     uint8_t * p;
     ASSERT_POINTER(buf);
